@@ -12,7 +12,19 @@ docs = {
     "spec.txt": "These specifications define the technical requirements for the equipment.",
 }
 
-# TODO: Write a tool to read a doc
+# Write a tool to read a doc
+@mcp.tool(
+    name="red_doc_contents",
+    description="Read the contents of a document and retuurn it as a string."    
+)
+def read_decument(
+    doc_id: str = Field(description="Id of the document to read")
+):
+   if doc_id not in docs:
+    raise ValueError(f"Doc with id {doc_id} not found")
+
+    return docs[doc_id]
+
 # TODO: Write a tool to edit a doc
 # TODO: Write a resource to return all doc id's
 # TODO: Write a resource to return the contents of a particular doc
